@@ -1,0 +1,4 @@
+[
+  { "name": "组织", "path": "/enterprise" },
+  { "name": "雇员", "path": "/employee" }
+]

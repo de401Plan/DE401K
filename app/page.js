@@ -14,12 +14,12 @@ import {
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 import dynamic from 'next/dynamic'
-
+import { SmartContract } from 'o1js'
 // 动态导入 o1js 相关组件
-const SmartContract = dynamic(
-  () => import('o1js').then((mod) => mod.SmartContract),
-  { ssr: false }
-);
+// const SmartContract = dynamic(
+//   () => import('o1js').then((mod) => mod.SmartContract),
+//   { ssr: false }
+// );
 
 // 注册 ChartJS 组件
 ChartJS.register(
@@ -135,7 +135,7 @@ export default function Home() {
             <Line options={chartOptions} data={fundData} />
           </Box>
         </SimpleGrid>
-        <Box display="flex" justifyContent="center" width="100%">
+        {/* <Box display="flex" justifyContent="center" width="100%">
           <Box className="card" flex="1" maxWidth="300px" mr={4}>
             <Link href="/enterprise" passHref>
               <Button width="100%">组织入口</Button>
@@ -146,7 +146,7 @@ export default function Home() {
               <Button width="100%">雇员入口</Button>
             </Link>
           </Box>
-        </Box>
+        </Box> */}
       </VStack>
     </Box>
   )
