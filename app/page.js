@@ -14,7 +14,7 @@ import {
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 import dynamic from 'next/dynamic'
-import { SmartContract } from 'o1js'
+// import { SmartContract } from 'o1js'
 // 动态导入 o1js 相关组件
 // const SmartContract = dynamic(
 //   () => import('o1js').then((mod) => mod.SmartContract),
