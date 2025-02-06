@@ -21,12 +21,12 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const activeBg = useColorModeValue('blue.500', 'blue.200');
-  const inactiveBg = 'transparent';
-  const activeColor = useColorModeValue('white', 'gray.800');
-  const inactiveColor = useColorModeValue('white.600', 'white.300');
-  const hoverBg = useColorModeValue('blue.300', 'blue.700');
-  const isActive = (path) => pathname === path;
+  // const activeBg = useColorModeValue('blue.500', 'blue.200');
+  // const inactiveBg = 'transparent';
+  // const activeColor = useColorModeValue('white', 'gray.800');
+  // const inactiveColor = useColorModeValue('white.600', 'white.300');
+  // const hoverBg = useColorModeValue('blue.300', 'blue.700');
+  // const isActive = (path) => pathname === path;
 
   return (
     <Box className={styles.description}>
