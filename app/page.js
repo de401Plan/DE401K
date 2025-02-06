@@ -13,6 +13,13 @@ import {
   Legend
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
+import dynamic from 'next/dynamic'
+
+// 动态导入 o1js 相关组件
+const SmartContract = dynamic(
+  () => import('o1js').then((mod) => mod.SmartContract),
+  { ssr: false }
+);
 
 // 注册 ChartJS 组件
 ChartJS.register(
@@ -111,7 +118,7 @@ export default function Home() {
                 <VStack spacing={3} align="center">
                   <Box fontSize="md" color="white" fontWeight="semibold">人均保费</Box>
                   <Box fontSize="2xl" fontWeight="bold" color="white">1,000</Box>
-                  <Box fontSize="sm" color="gray.300">USDT/月</Box>
+                  <Box fontSize="sm" color="gray.300">U/月</Box>
                 </VStack>
               </Box>
             </Box>

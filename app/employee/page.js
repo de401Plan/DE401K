@@ -28,14 +28,14 @@ import {
 } from '@chakra-ui/react';
 import InsuranceCard from '../components/InsuranceCard';
 import BigNumber from 'bignumber.js';
-import CryptoJS from 'crypto-js';
+// import CryptoJS from 'crypto-js';
 import { useWallet } from '@/app/context/WalletContext';
 
-// 模拟的 Pedersen 承诺函数
-function pedersenCommitment(message, randomness) {
-    // 注意：这只是一个模拟实现，不是真正的 Pedersen 承诺
-    return CryptoJS.SHA256(message + randomness).toString();
-  }
+// // 模拟的 Pedersen 承诺函数
+// function pedersenCommitment(message, randomness) {
+//     // 注意：这只是一个模拟实现，不是真正的 Pedersen 承诺
+//     return CryptoJS.SHA256(message + randomness).toString();
+//   }
 
 // 模拟的员工保单数据
 const employeePolicies = [
@@ -102,37 +102,37 @@ export default function EmployeePage() {
   }, []);
 
   const handleGenerateSocialSecurityId = () => {
-    const { enterpriseId, key, password } = socialSecurityInfo;
+    // const { enterpriseId, key, password } = socialSecurityInfo;
     
-    // 第一步：使用 SHA-256 哈希企业 ID 和密码的组合
-    const sha256Hash = CryptoJS.SHA256(enterpriseId + password).toString();
+    // // 第一步：使用 SHA-256 哈希企业 ID 和密码的组合
+    // const sha256Hash = CryptoJS.SHA256(enterpriseId + password).toString();
     
-    // 第二步：使用 Pedersen 承诺（这里用模拟函数）结合 key 和 SHA-256 哈希结果
-    const pedersenHash = pedersenCommitment(sha256Hash, key);
+    // // 第二步：使用 Pedersen 承诺（这里用模拟函数）结合 key 和 SHA-256 哈希结果
+    // const pedersenHash = pedersenCommitment(sha256Hash, key);
     
-    // 设置生成的社保 ID
-    setSocialSecurityId(pedersenHash);
+    // // 设置生成的社保 ID
+    // setSocialSecurityId(pedersenHash);
     
-    navigator.clipboard.writeText(pedersenHash).then(() => {
-        toast({
-          title: "复制成功",
-          description: `您的社保 ID 是: ${pedersenHash}, 已复制到粘贴板`,
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-      }).catch((err) => {
-        console.error('Failed to copy: ', err);
-        toast({
-          title: "复制失败",
-          description: `您的社保 ID 是: ${pedersenHash}, 已手动复制到粘贴板`,
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      });
+    // navigator.clipboard.writeText(pedersenHash).then(() => {
+    //     toast({
+    //       title: "复制成功",
+    //       description: `您的社保 ID 是: ${pedersenHash}, 已复制到粘贴板`,
+    //       status: "success",
+    //       duration: 3000,
+    //       isClosable: true,
+    //     });
+    //   }).catch((err) => {
+    //     console.error('Failed to copy: ', err);
+    //     toast({
+    //       title: "复制失败",
+    //       description: `您的社保 ID 是: ${pedersenHash}, 已手动复制到粘贴板`,
+    //       status: "error",
+    //       duration: 3000,
+    //       isClosable: true,
+    //     });
+    //   });
 
-    onClose();
+    // onClose();
   };
 
   // 模拟函数
