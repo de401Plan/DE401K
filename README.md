@@ -21,7 +21,7 @@
 
 ### 安装
 
-1. 克隆仓库到本地：git clone https://github.com/your-username/social-security-management.git
+1. 克隆仓库到本地：git clone https://github.com/de401Plan/DE401K.git
 
 2. 安装依赖：npm install
 
@@ -53,7 +53,7 @@
 - Next.js
 - React
 - Chakra UI
-- crypto-js (用于加密操作)
+- o1js
 
 ## 贡献
 
