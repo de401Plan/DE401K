@@ -11,8 +11,6 @@ import {
 } from '@chakra-ui/react';
 import { usePathname } from 'next/navigation';
 import MinaWalletConnect from './minaWalletConnect';
-import logo from './logo.png';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export default function Header() {
   const pathname = usePathname();

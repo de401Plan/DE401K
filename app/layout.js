@@ -1,15 +1,9 @@
 'use client'
 
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-import { WagmiConfig } from 'wagmi'
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit'
-import { WagmiProvider, configureChains } from 'wagmi';
-import { config } from "./wagmiConfig";
 import Header from './components/header/header'
-import '@rainbow-me/rainbowkit/styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/globals.css'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WalletProvider } from './context/WalletContext'
 
 const theme = extendTheme({
@@ -46,7 +40,6 @@ const theme = extendTheme({
   },
 })
 
-const queryClient = new QueryClient()
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -54,17 +47,13 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body>
-        <WagmiProvider config={config}> 
-            <QueryClientProvider client={queryClient}>
-                <WalletProvider>
-                    <ChakraProvider theme={theme}>
-                        <div className="tech-background"></div>
-                        <Header />
-                        {children}
-                    </ChakraProvider>
-                </WalletProvider>
-            </QueryClientProvider>
-        </WagmiProvider>
+        <WalletProvider>
+            <ChakraProvider theme={theme}>
+                <div className="tech-background"></div>
+                <Header />
+                {children}
+            </ChakraProvider>
+        </WalletProvider>
       </body>
     </html>
   )

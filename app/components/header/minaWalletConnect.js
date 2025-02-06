@@ -2,7 +2,6 @@
 
 import { Button, Tooltip } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { Field } from 'o1js';
 import { useWallet } from '@/app/context/WalletContext';
 
 const getEllipsisTxt = (address) => {
@@ -15,21 +14,9 @@ const getEllipsisTxt = (address) => {
 const ZKAPP_ADDRESS = 'B62qpXPvmKDf4SaFJynPsT6DyvuxMS9H1pT4TGonDT26m599m7dS9gP';
 export default function MinaWalletConnect() {
     const { setWalletAddress, setIsConnected } = useWallet();
-    const [hasWallet, setHasWallet] = useState(null);
-    const [hasBeenSetup, setHasBeenSetup] = useState(false);
-    const [accountExists, setAccountExists] = useState(false);
     const [publicKeyBase58, setPublicKeyBase58] = useState('');
-    const [creatingTransaction, setCreatingTransaction] = useState(false);
-    const [displayText, setDisplayText] = useState('');
     const [transactionlink, setTransactionLink] = useState('');
 
-    useEffect(() => {
-        // const setup = async () => {
-            
-        //   };
-      
-        //   setup();
-    }, []);
 
     const connectWallet = async () => {
         try {

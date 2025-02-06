@@ -22,6 +22,7 @@ import {
 } from '@chakra-ui/react';
 import InsuranceCard from '../../components/InsuranceCard';
 import BigNumber from 'bignumber.js';
+import { useWallet } from '@/app/context/WalletContext';
 
 
 // 模拟的员工保单数据
@@ -70,6 +71,7 @@ const initialPolicies = [
 export default function EmployeePoliciesPage() {
   const [policies, setPolicies] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { walletAddress, isConnected } = useWallet();
   const [newPolicy, setNewPolicy] = useState({
     employeeName: '',
     socialSecurityId: '',
@@ -138,7 +140,7 @@ export default function EmployeePoliciesPage() {
               withdrawableBalance={new BigNumber(policy.monthlyContribution).multipliedBy(3)} // 模拟可提取金额等于已缴纳金额
               startWithdrawTime={policy.initialTime + policy.withdrawalDelay} // 使用设定的延迟时间
               curAvailableFunds={new BigNumber(policy.monthlyWithdrawal)} // 模拟当前可用资金为一个月的提取金额
-              walletAddress="0x1111111111111111111111111111111111111111" // 模拟当前钱包地址
+              walletAddress={walletAddress} // 模拟当前钱包地址
               handleClaimFunds={mockFunction}
               handleDeposit={mockFunction}
               handleWithdrawBalance={mockFunction}
