@@ -21,12 +21,12 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
 
-  // const activeBg = useColorModeValue('blue.500', 'blue.200');
-  // const inactiveBg = 'transparent';
-  // const activeColor = useColorModeValue('white', 'gray.800');
-  // const inactiveColor = useColorModeValue('white.600', 'white.300');
-  // const hoverBg = useColorModeValue('blue.300', 'blue.700');
-  // const isActive = (path) => pathname === path;
+  const activeBg = useColorModeValue('blue.500', 'blue.200');
+  const inactiveBg = 'transparent';
+  const activeColor = useColorModeValue('white', 'gray.800');
+  const inactiveColor = useColorModeValue('white.600', 'white.300');
+  const hoverBg = useColorModeValue('blue.300', 'blue.700');
+  const isActive = (path) => pathname === path;
 
   return (
     <Box className={styles.description}>
@@ -36,7 +36,7 @@ export default function Header() {
           <Box className={styles.creepsterRegular}>DE401K</Box>
         </HStack>
       </Link>
-      {/* <HStack spacing={4} flex={1} justify="center" mx={8}>
+      <HStack spacing={4} flex={1} justify="center" mx={8}>
         {navItems.map((item) => (
           <Button
             key={item.path}
@@ -56,7 +56,7 @@ export default function Header() {
             {item.name}
           </Button>
         ))}
-      </HStack> */}
+      </HStack>
       <Box style={{fontSize: '15px'}}>
         <MinaWalletConnect />
       </Box>
