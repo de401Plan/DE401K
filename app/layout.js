@@ -10,6 +10,7 @@ import '@rainbow-me/rainbowkit/styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/globals.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { WalletProvider } from './context/WalletContext'
 
 const theme = extendTheme({
   styles: {
@@ -55,18 +56,13 @@ export default function RootLayout({ children }) {
       <body>
         <WagmiProvider config={config}> 
             <QueryClientProvider client={queryClient}>
-                <RainbowKitProvider locale="en-US" coolMode
-                    // showRecentTransactions={true}
-                    theme={darkTheme({
-                    accentColor: '#555555',
-                    accentColorForeground: 'white',
-                    })}>
+                <WalletProvider>
                     <ChakraProvider theme={theme}>
                         <div className="tech-background"></div>
                         <Header />
                         {children}
                     </ChakraProvider>
-                </RainbowKitProvider>
+                </WalletProvider>
             </QueryClientProvider>
         </WagmiProvider>
       </body>

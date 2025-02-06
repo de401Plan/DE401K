@@ -23,43 +23,47 @@ import {
 import InsuranceCard from '../../components/InsuranceCard';
 import BigNumber from 'bignumber.js';
 
+
 // 模拟的员工保单数据
 const initialPolicies = [
   {
     employeeName: "张三",
-    contractAddress: '0x1234567890123456789012345678901234567890',
+    contractAddress: 'B62qpXPvmKDf4SaFJynPsT6DyvuxMS9H1pT4TGonDT26m599m7dS9gP',
     isContractActive: true,
-    initialTime: Math.floor(Date.now() / 1000) - 30 * 24 * 60 * 60, // 30 days ago
-    depositedToken: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', // USDC address
+    initialTime: Math.floor(Date.now() / 1000) - 365 * 24 * 60 * 60, // 1 year ago
+    depositedToken: 'xnyyp6sfZiibd4WJBVPiPKCr97Z8J39AkXQ5G3wmgAhRmS6q3C', // USDC address
     monthlyContribution: new BigNumber(1000).shiftedBy(6).toString(), // 1000 USDC
-    monthlyWithdrawal: new BigNumber(500).shiftedBy(6).toString(), // 500 USDC
-    policyHolder: '0x1111111111111111111111111111111111111111',
-    beneficiary: '0x9876543210987654321098765432109876543210',
-    emergencyAddress: '0x2222222222222222222222222222222222222222'
+    monthlyWithdrawal: new BigNumber(0).shiftedBy(6).toString(), // 500 USDC
+    policyHolder: 'B62qrZXbP3KgSGQJYSL7NfypA6prcCt8UTJpnzg4SR2vXW4QrMBRbPy',
+    beneficiary: 'B62qrZXbP3KgSGQJYSL7NfypA6prcCt8UTJpnzg4SR2vXW4QrMBRbPy',
+    emergencyAddress: 'B62qrZXbP3KgSGQJYSL7NfypA6prcCt8UTJpnzg4SR2vXW4QrMBRbPy',
+    withdrawalDelay: 10 * 365 * 24 * 60 * 60
   },
   {
     employeeName: "李四",
-    contractAddress: '0x0987654321098765432109876543210987654321',
-    isContractActive: true,
-    initialTime: Math.floor(Date.now() / 1000) - 60 * 24 * 60 * 60, // 60 days ago
-    depositedToken: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', // USDC address
-    monthlyContribution: new BigNumber(1500).shiftedBy(6).toString(), // 1500 USDC
-    monthlyWithdrawal: new BigNumber(750).shiftedBy(6).toString(), // 750 USDC
-    policyHolder: '0x1111111111111111111111111111111111111111',
-    beneficiary: '0x4444444444444444444444444444444444444444',
-    emergencyAddress: '0x5555555555555555555555555555555555555555'
+    contractAddress: 'B62qodtSGWiVPzeXa2yaoAfYEW82qoVRUJozSQqbDYpTbaFYFeQeGCM',
+    isContractActive: false,
+    initialTime: Math.floor(Date.now() / 1000) - 730 * 24 * 60 * 60, // 2 years ago
+    depositedToken: 'xnyyp6sfZiibd4WJBVPiPKCr97Z8J39AkXQ5G3wmgAhRmS6q3C', // USDC address
+    monthlyContribution: new BigNumber(800).shiftedBy(6).toString(), // 800 USDC
+    monthlyWithdrawal: new BigNumber(400).shiftedBy(6).toString(), // 400 USDC
+    policyHolder: 'B62qk864H65caK77iugPEP25jTB7Miv5AZQdqpezQzgjQsDeynjsu7m',
+    beneficiary: 'B62qk864H65caK77iugPEP25jTB7Miv5AZQdqpezQzgjQsDeynjsu7m',
+    emergencyAddress: 'B62qk864H65caK77iugPEP25jTB7Miv5AZQdqpezQzgjQsDeynjsu7m',
+    withdrawalDelay: 335 * 24 * 60 * 60
   },
   {
     employeeName: "王五",
-    contractAddress: '0x5678901234567890123456789012345678901234',
+    contractAddress: 'B62qodtSGWiVPzeXa2yaoAfYEW82qoVRUJozSQqbDYpTbaFYFeQeGCM',
     isContractActive: false,
     initialTime: Math.floor(Date.now() / 1000) - 90 * 24 * 60 * 60, // 90 days ago
-    depositedToken: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', // USDC address
+    depositedToken: 'wqt8AFhKhv3Z1wkRoWFgJ66Sx4Yep1EEeaSSQDYwRyhoTDxSin', // USDC address
     monthlyContribution: new BigNumber(2000).shiftedBy(6).toString(), // 2000 USDC
-    monthlyWithdrawal: new BigNumber(1000).shiftedBy(6).toString(), // 1000 USDC
-    policyHolder: '0x1111111111111111111111111111111111111111',
-    beneficiary: '0x7777777777777777777777777777777777777777',
-    emergencyAddress: '0x1111111111111111111111111111111111111111'
+    monthlyWithdrawal: new BigNumber(0).shiftedBy(6).toString(), // 1000 USDC
+    policyHolder: 'B62qjwDWxjf4LtJ4YWJQDdTNPqZ69ZyeCzbpAFKN7EoZzYig5ZRz8JE',
+    beneficiary: 'B62qjwDWxjf4LtJ4YWJQDdTNPqZ69ZyeCzbpAFKN7EoZzYig5ZRz8JE',
+    emergencyAddress: 'B62qjwDWxjf4LtJ4YWJQDdTNPqZ69ZyeCzbpAFKN7EoZzYig5ZRz8JE',
+    withdrawalDelay: 3 * 365 * 24 * 60 * 60
   }
 ];
 
@@ -127,7 +131,7 @@ export default function EmployeePoliciesPage() {
               key={policy.contractAddress}
               insurance={policy}
               index={index}
-              symbol="USDC"
+              symbol="MINA"
               decimals={6}
               paidBalance={new BigNumber(policy.monthlyContribution).multipliedBy(3)} // 模拟已缴纳3个月
               toBePaidBalance={new BigNumber(0)} // 模拟无待缴纳金额

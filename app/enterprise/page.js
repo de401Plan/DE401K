@@ -96,7 +96,8 @@ export default function EnterprisePage() {
                 <Text color={textColor}>企业编号: {enterprise.number}</Text>
                 <Text color={textColor}>总部所在地: {enterprise.location}</Text>
                 <Text color={textColor}>主营业务: {enterprise.business}</Text>
-                <Text color={textColor}>当前缴纳社保的员工数量: {4}</Text>
+                <Text color={textColor}>正缴纳社保的员工数量: {1}</Text>
+                <Text color={textColor}>所有缴纳社保的员工数量: {3}</Text>
                 <Button colorScheme="purple" onClick={handleManageEmployees}>管理员工社保</Button>
               </Stack>
             </CardBody>
@@ -118,7 +119,8 @@ export default function EnterprisePage() {
                 name="name" 
                 value={formData.name} 
                 onChange={handleInputChange} 
-                bg="white" 
+                bg="white"
+                color="black"
                 sx={customInputStyle}
                 placeholder="输入企业/DAO名称"
               />
@@ -129,8 +131,9 @@ export default function EnterprisePage() {
                 name="location" 
                 value={formData.location} 
                 onChange={handleInputChange} 
-                bg="white" 
-                sx={customInputStyle}  // 应用自定义样式
+                bg="white"
+                color="black"
+                sx={customInputStyle}
               />
             </FormControl>
             <FormControl mt={4}>
@@ -139,8 +142,9 @@ export default function EnterprisePage() {
                 name="business" 
                 value={formData.business} 
                 onChange={handleInputChange} 
-                bg="white" 
-                sx={customInputStyle}  // 应用自定义样式
+                bg="white"
+                color="black" 
+                sx={customInputStyle}
               />
             </FormControl>
           </ModalBody>

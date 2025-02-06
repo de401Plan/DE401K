@@ -29,6 +29,7 @@ import {
 import InsuranceCard from '../components/InsuranceCard';
 import BigNumber from 'bignumber.js';
 import CryptoJS from 'crypto-js';
+import { useWallet } from '@/app/context/WalletContext';
 
 // 模拟的 Pedersen 承诺函数
 function pedersenCommitment(message, randomness) {
@@ -40,29 +41,29 @@ function pedersenCommitment(message, randomness) {
 const employeePolicies = [
   {
     employeeName: "张三",
-    contractAddress: '0x1234567890123456789012345678901234567890',
+    contractAddress: 'B62qpXPvmKDf4SaFJynPsT6DyvuxMS9H1pT4TGonDT26m599m7dS9gP',
     isContractActive: true,
     initialTime: Math.floor(Date.now() / 1000) - 365 * 24 * 60 * 60, // 1 year ago
-    depositedToken: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', // USDC address
+    depositedToken: 'xnyyp6sfZiibd4WJBVPiPKCr97Z8J39AkXQ5G3wmgAhRmS6q3C', // USDC address
     monthlyContribution: new BigNumber(1000).shiftedBy(6).toString(), // 1000 USDC
     monthlyWithdrawal: new BigNumber(500).shiftedBy(6).toString(), // 500 USDC
-    policyHolder: '0x9876543210987654321098765432109876543210',
-    beneficiary: '0x1111111111111111111111111111111111111111',
-    emergencyAddress: '0x2222222222222222222222222222222222222222',
+    policyHolder: 'B62qoa4bT3m19nusva6tBxTLSqA1oXsX9ZJ9uxLd4tXj7KN7r1ZHsRx',
+    beneficiary: 'B62qrZXbP3KgSGQJYSL7NfypA6prcCt8UTJpnzg4SR2vXW4QrMBRbPy',
+    emergencyAddress: 'B62qrZXbP3KgSGQJYSL7NfypA6prcCt8UTJpnzg4SR2vXW4QrMBRbPy',
     companyName: "Uniswap",
     companyId: 3,
   },
   {
     employeeName: "李四",
-    contractAddress: '0x0987654321098765432109876543210987654321',
+    contractAddress: 'B62qodtSGWiVPzeXa2yaoAfYEW82qoVRUJozSQqbDYpTbaFYFeQeGCM',
     isContractActive: false,
     initialTime: Math.floor(Date.now() / 1000) - 730 * 24 * 60 * 60, // 2 years ago
-    depositedToken: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', // USDC address
+    depositedToken: 'xnyyp6sfZiibd4WJBVPiPKCr97Z8J39AkXQ5G3wmgAhRmS6q3C', // USDC address
     monthlyContribution: new BigNumber(800).shiftedBy(6).toString(), // 800 USDC
     monthlyWithdrawal: new BigNumber(400).shiftedBy(6).toString(), // 400 USDC
-    policyHolder: '0x3333333333333333333333333333333333333333',
-    beneficiary: '0x4444444444444444444444444444444444444444',
-    emergencyAddress: '0x5555555555555555555555555555555555555555',
+    policyHolder: 'B62qoa4bT3m19nusva6tBxTLSqA1oXsX9ZJ9uxLd4tXj7KN7r1ZHsRx',
+    beneficiary: 'B62qk864H65caK77iugPEP25jTB7Miv5AZQdqpezQzgjQsDeynjsu7m',
+    emergencyAddress: 'B62qk864H65caK77iugPEP25jTB7Miv5AZQdqpezQzgjQsDeynjsu7m',
     companyName: "AAVE",
     companyId: 6,
   }
@@ -77,6 +78,7 @@ export default function EmployeePage() {
   });
   const [socialSecurityId, setSocialSecurityId] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const { walletAddress, isConnected } = useWallet();
 
   const textColor = useColorModeValue('gray.800', 'white');
   const titleColor = useColorModeValue('white.800', 'white');
@@ -205,9 +207,9 @@ export default function EmployeePage() {
     <Box className="container" py={8}>
       <VStack spacing={6} align="stretch">
         <Heading as="h1" size="2xl" color={titleColor} textAlign="center">我的保单列表</Heading>
-        <Button colorScheme="blue" onClick={onOpen} alignSelf="flex-end">
+        {/* <Button colorScheme="blue" onClick={onOpen} alignSelf="flex-end">
           生成社保ID
-        </Button>
+        </Button> */}
         <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={6}>
           {employeePolicies.map((policy, index) => (
             <InsuranceCard
@@ -215,14 +217,14 @@ export default function EmployeePage() {
               key={policy.contractAddress}
               insurance={policy}
               index={index}
-              symbol="USDC"
+              symbol="MINA"
               decimals={6}
               paidBalance={new BigNumber(policy.monthlyContribution).multipliedBy(12)} // 模拟已缴纳12个月
               toBePaidBalance={new BigNumber(0)} // 模拟无待缴纳金额
               withdrawableBalance={new BigNumber(policy.monthlyContribution).multipliedBy(12)} // 模拟可提取金额等于已缴纳金额
               startWithdrawTime={policy.initialTime + 365 * 24 * 60 * 60} // 一年后开始提取
               curAvailableFunds={new BigNumber(policy.monthlyWithdrawal)} // 模拟当前可用资金为一个月的提取金额
-              walletAddress="0x1111111111111111111111111111111111111111" // 模拟当前钱包地址
+              walletAddress={walletAddress} // 模拟当前钱包地址
               handleClaimFunds={handleClaimFunds}
               handleDeposit={mockFunction}
               handleWithdrawBalance={mockFunction}
